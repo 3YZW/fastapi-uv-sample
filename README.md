@@ -3,7 +3,7 @@
 Python の Web フレームワーク FastAPI の学習用リポジトリ。
 公式チュートリアル（<https://fastapi.tiangolo.com/learn/>）をベースに、pip を使用している箇所を uv に置き換えて学習する。
 
-## 1. uvで新規Pythonプロジェクトを作成
+## 1. uv で新規Pythonプロジェクトを作成
 
 以下のコマンドを実行。
 
@@ -13,7 +13,7 @@ uv init
 
 ## 2. FastAPI と Uvicorn のインストール
 
-以下のコマンドを実行。
+FastAPI と ASGI サーバーである Uvicorn を uv で追加。
 
 ```bash
 uv add fastapi
@@ -51,4 +51,29 @@ Installed 9 packages in 20ms
  + uvloop==0.22.1
  + watchfiles==1.1.1
  + websockets==15.0.1
+```
+
+## 3. サーバー起動
+
+main.pyを公式チュートリアルの通りに編集し、以下のコマンドでアプリケーションを起動。
+
+```bash
+uv run uvicorn main:app --reload
+```
+
+ブラウザで <http://127.0.0.1:8000> にアクセスすると、JSON レスポンスが返る。
+
+実行結果
+
+```text
+INFO:     Will watch for changes in these directories: ['/Users/nt-m/fastapi-uv-sample']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [10206] using WatchFiles
+INFO:     Started server process [10211]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:54615 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54615 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54616 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54616 - "GET /openapi.json HTTP/1.1" 200 OK
 ```
