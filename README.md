@@ -11,12 +11,13 @@ Python の Web フレームワーク FastAPI の学習用リポジトリ。
 uv init
 ```
 
-## 2. FastAPIのインストール
+## 2. FastAPI と Uvicorn のインストール
 
 以下のコマンドを実行。
 
 ```bash
 uv add fastapi
+uv add "uvicorn[standard]"
 ```
 
 実行結果
@@ -38,4 +39,16 @@ Installed 11 packages in 26ms
  + starlette==0.49.3
  + typing-extensions==4.15.0
  + typing-inspection==0.4.2
+Resolved 26 packages in 308ms
+Prepared 9 packages in 135ms
+Installed 9 packages in 20ms
+ + click==8.1.8
+ + h11==0.16.0
+ + httptools==0.7.1
+ + python-dotenv==1.2.1
+ + pyyaml==6.0.3
+ + uvicorn==0.39.0
+ + uvloop==0.22.1
+ + watchfiles==1.1.1
+ + websockets==15.0.1
 ```
