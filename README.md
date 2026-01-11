@@ -77,3 +77,23 @@ INFO:     127.0.0.1:54615 - "GET /favicon.ico HTTP/1.1" 404 Not Found
 INFO:     127.0.0.1:54616 - "GET /docs HTTP/1.1" 200 OK
 INFO:     127.0.0.1:54616 - "GET /openapi.json HTTP/1.1" 200 OK
 ```
+
+## 4. パスパラメータ
+
+FastAPI の Path Parameters を用いて、URL パスから値を受け取るエンドポイントを作成する。
+
+main.py に以下のエンドポイントを追加。
+
+```python
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+    return {"item_id": item_id}
+```
+
+ブラウザで <http://127.0.0.1:8000/items/3> にアクセス。
+
+```text
+{"item_id":3}
+```
+
+自動生成された API ドキュメント(/docs)上でも、パスパラメータが確認できる。
