@@ -90,10 +90,28 @@ async def read_item(item_id: int):
     return {"item_id": item_id}
 ```
 
-ブラウザで <http://127.0.0.1:8000/items/3> にアクセス。
+ブラウザで <http://127.0.0.1:8000/items/3> にアクセスした結果
 
 ```text
 {"item_id":3}
 ```
 
 自動生成された API ドキュメント(/docs)上でも、パスパラメータが確認できる。
+
+## 5. クエリパラメータ
+
+FastAPI の Query Parameters を用いて、URL のクエリ文字列から値を受け取る。
+
+main.py に以下のエンドポイントを追加。
+
+```python
+@app.get("/items/")
+async def read_item(skip: int = 0, limit: int = 10):
+    return {"skip": skip, "limit": limit}
+```
+
+ブラウザで <http://127.0.0.1:8000/items/?skip=5&limit=20> にアクセスした結果
+
+```text
+{"skip":5,"limit":20}
+```
