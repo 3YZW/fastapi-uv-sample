@@ -115,3 +115,26 @@ async def read_item(skip: int = 0, limit: int = 10):
 ```text
 {"skip":5,"limit":20}
 ```
+
+### 5.1 Query Parameters を使った一覧制御（例）
+
+Query Parameters を用いて、取得件数や開始位置を制御する例。
+
+main.py に仮データ配列 `fake_items_db` を追加。
+前述のPythonコードのreturnを以下に編集。
+
+```python
+    return fake_items_db[skip : skip + limit]
+```
+
+ブラウザで <http://127.0.0.1:8000/items/?skip=5&limit=20> にアクセスした結果
+
+```text
+[]
+```
+
+ブラウザで <http://127.0.0.1:8000/items/?skip=1&limit=3> にアクセスした結果
+
+```text
+[{"item_name":"Bar"},{"item_name":"Baz"}]
+```
